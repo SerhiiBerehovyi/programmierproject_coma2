@@ -3,34 +3,22 @@ include("is_visible.jl")
 
 
 function snapshot_sphere(b,h,daten,m,r,dichte)
-    pic = initial_pic()
+    pic = fill((255, 255, 255, 255), (500, 500))
     
+    daten = reshape(daten, (h, b))
     
-    for i=1:h
-        for j=1:b
-            p = samples(j,i, b,h, m, r, dichte)
-            if is_visible(p, m ,r)
-                camera = abbild(p)
-                x = camera[1] + 251
-                y = camera[2] + 251
-                
-                pic[x][y] = [daten[i*j], daten[i*j+1], daten[i*j+2]]
+    for i = 1:h
+        for j = 1:b
+            points = samples(j, i, b,h, m,r, dichte)
+            
+            for p in points
+                if is_visible(p, m ,r)
+                    xy = abbild(p)
+                    pic[(-1) * xy[2] + 250, (-1) * xy[1] + 250] = daten[i,j]
+                end
             end
         end
     end
-    return pic
+    
+    return reshape(pic, (1, 500^2))
 end
-
-function initial_pic()
-    pic = []
-    for i=1:500
-        row = []
-        for j=1:500
-            push!(row, [255,255,255])
-        end
-        push!(pic, row)
-    end
-    return pic
-end
-
-

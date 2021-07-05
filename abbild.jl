@@ -5,10 +5,9 @@ function abbild(p)
     :p: Tuple{Int, Int, Int}. vector [0,p], where p = (x,y,z)
     :returns: returns a Tuple{Int, Int} with coordinates of intersection OR Nothing, if there is no one
 =#
-    # check input data
-    #if typeof(p) != Tuple{Int, Int, Int}
-    #    return nothing
-    #end
+    if p[3] < 250
+        return nothing
+    end
     
     #= 
      camera plane is parallel to xOy,so A and B in General 
@@ -20,18 +19,17 @@ function abbild(p)
     t = 250/p[3]
     
     # if t is not in 0..1, there is no intersection with plane 
-    if t < 0 || t > 1
-        return nothing
-    end
+    #if t < 0 || t > 1
+    #    return nothing
+    #end
     
-    x = round(Int, t*p[1])
-    y = round(Int, t*p[2])
+    x = t*p[1]
+    y = t*p[2]
     
-    if (-250 < x && x < 250) && (-250 < y && y < 250)
-        return x, y
-    else
-        return nothing
+    if (-250 <= x < 250) && (-250 <= y < 250)
+        return (Int(floor(x)), Int(floor(y)))
     end
+    return nothing
 end
 
 #println(abbild((1,2,3)))
