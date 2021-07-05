@@ -1,0 +1,18 @@
+from PIL import Image
+import numpy as np
+from julia import Julia
+
+
+
+def main():
+    image = []
+    b = 0
+    h = 0
+    with Image.open("space.png") as im:
+        image = np.array(im)
+        b, h = im.size
+    
+    
+if __name__ == "__main__":
+    main()
+    
