@@ -1,9 +1,9 @@
 function abbild(p)
 #=
-    finds an intersection of vector p with plane of camera 
+finds an intersection of vector p with plane of camera 
 
-    :p: Tuple{Int, Int, Int}. vector [0,p], where p = (x,y,z)
-    :returns: returns a Tuple{Int, Int} with coordinates of intersection OR Nothing, if there is no one
+:p: Tuple{Int, Int, Int}. vector [0,p], where p = (x,y,z)
+:returns: returns a Tuple{Int, Int} with coordinates of intersection OR Nothing, if there is no one
 =#
     if p[3] < 250
         return nothing
