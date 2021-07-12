@@ -22,8 +22,8 @@ of values
         # needed for shifting of pixel (x,y)
         p = map(rand, (Float64, Float64))
 
-        theta = (x + p[1]) / b * pi
-        phi = (y + p[2]) / h  * 2 * pi
+        theta = (x + p[1]) / h * pi
+        phi = (y + p[2]) / b  * 2 * pi
         
         dx = m[1] + r * sin(theta) * cos(phi)
         dy = m[2] + r * sin(theta) * sin(phi)
