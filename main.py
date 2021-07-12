@@ -54,7 +54,7 @@ def get_data():
         
         center  = get_field("Enter coordinates of center of sphere (\"(0,0,450)\" or \"0,0,450\"): ",
                             "(0,0,450)")
-        center = tuple([int(x) for x in findall(r'\d+', center)])
+        center = tuple([int(x) for x in findall('-?\d+', center)])
         
         radius  = int(get_field("Enter radius: ", 200))
         density = int(get_field("Enter density: ", 10))
